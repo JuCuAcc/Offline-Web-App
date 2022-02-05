@@ -11,7 +11,7 @@ class MyHeader extends HTMLElement {
                 <nav>
                     <ul>
                         <li><a href="Home.html">Home</a></li>
-                        <li><a href="MyWebSql.html">WebSql</a></li>
+                        <li><a href="MyWebSQL.html">WebSql</a></li>
                         <li><a href="MyLocalStorage.html">Local Storage</a></li>
                         <li><a href="MySessionlStorage.html">Session Storage</a></li>
                         <li><a href="MyIndexedDB.html">IndexedDB</a></li>
