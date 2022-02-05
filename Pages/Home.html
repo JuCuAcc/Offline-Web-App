@@ -1,0 +1,67 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Home</title>
+    <link href="../css/Home.css" rel="stylesheet" />
+    <script src="../Scripts/Home.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+            <div class="content">
+                <h2>01</h2>
+                <h3>Web SQL</h3>
+                <p>
+                    Web SQL is used when targeting specific platforms. Current browser implementations are based on SQLite, which gives you all the power
+                    of a full relational database.
+                </p>
+                <a href="MyWebSql.html">See Practically</a>
+            </div>
+        </div>
+        <div class="card">
+            <div class="content">
+                <h2>02</h2>
+                <h3>Local Storage</h3>
+                <p>
+                    Local Storage Shares data across all windows and tabs within the same origin. Other tabs and windows can subscribe to storage events to receive notifications when
+                    a change occurs to Local Storage.
+                </p>
+                <a href="MyLocalStorage.html">See Practically</a>
+            </div>
+        </div>
+        <div class="card">
+            <div class="content">
+                <h2>03</h2>
+                <h3>Session Storage</h3>
+                <p>
+                    Session Storage Data is sandboxed to only the current tab or window and is
+                    cleared when closed. Because Session Storage data is not shared beyond the current tab or window, others
+                    will not receive notifications when a change occurs.
+                </p>
+                <a href="MySessionlStorage.html">See Practically</a>
+            </div>
+        </div>
+        <div class="card">
+            <div class="content">
+                <h2>04</h2>
+                <h3>IndexedDB</h3>
+                <p>
+                    IndexedDB is a key-based object database available in most current browsers. Databases contain object stores, which are somewhat equivalent to table structures in
+                    a relational database. Each object store has a designated key path that identifies its key.
+                </p>
+                <a href="MyIndexedDB.html">See Practically</a>
+            </div>
+        </div>
+    </div>
+    <script src="../Scripts/vanilla-tilt.js"></script>
+    <script>
+        VanillaTilt.init(document.querySelectorAll(".card"), {
+            max: 25,
+            speed: 400,
+            glare: true,
+            "max-glare":1,
+        });
+    </script>
+</body>
+</html>

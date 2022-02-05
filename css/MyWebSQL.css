@@ -1,0 +1,163 @@
+﻿html {
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #333;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+
+}
+
+body {
+    background: linear-gradient(#2196f3,#e91e63);
+    margin: 30px 50px;
+    line-height: 1.4;
+}
+
+#container{
+    display:grid;
+    justify-content:center;
+}
+
+#input {
+    margin: 40px;
+    background: #ccc;
+    padding: 20px 30px;
+    box-shadow: 0 1px 5px rgba(104, 104, 104, 0.8);
+}
+
+#input h1{
+    text-align:center;
+    color:#555;
+}
+#input div{
+    margin:15px;
+}
+
+#dataArea label{
+    float:left;
+    display:block;
+    clear:both;
+    margin:10px;
+}
+#dataArea input {
+    float: right;
+    margin: 10px 10px 0px 10px;
+}
+
+#editContact {
+    background: none repeat scroll 0 0 #F8F8F8;
+    width: 480px;
+    margin-top: 20px;
+    box-shadow: 0 1px 5px rgba(104, 104, 104, 0.8);
+    background-color: #ccc;
+}
+
+    #editContact h1 {
+        padding-left: 65px;
+        margin-top: 10px;
+        font-size: 1.5rem;
+        color: #555;
+        text-align: center;
+    }
+
+    #editContact div {
+        width: 350px;
+        padding: 10px;
+        padding-left: 30px;
+    }
+
+        #editContact div.buttons {
+            text-align: center;
+        }
+
+    #editContact label {
+        width: 150px;
+        height: 12px;
+        clear: left;
+        display: block;
+        float: left;
+        color: #555;
+    }
+
+    #editContact input {
+        width: 190px;
+        padding: 3px;
+    }
+
+#btnArea button, input {
+    margin-top: 40px;
+    padding: 5px 20px;
+    border: none;
+    border-radius:5px;
+
+}
+
+#btnArea input{
+    background:#FFF;
+}
+
+#btnArea input:hover {
+    background: #555;
+    color:#FFF;
+}
+#btn {
+    margin-left: 90px;
+    background: #555;
+    color: #fff;
+}
+
+#btn:hover{
+    background:white;
+    color:#333;
+}
+#fileArea{
+    padding-left:5px;
+}
+
+#output h1{
+    text-align:center;
+}
+
+#contacts {
+    width: 740px;
+    border: 1px solid #E1E1E1;
+    margin: 0px;
+    padding: 0px;
+    box-shadow: 0 1px 5px rgba(104, 104, 104, 0.8);
+}
+
+    #contacts thead {
+        background-color: #e1e1e1;
+        color: #7C756D;
+        font-weight: bold;
+        text-align: left;
+    }
+
+    #contacts tbody tr:nth-child(even) {
+        background-color: #ddd;
+    }
+
+    #contacts th {
+        border-color: #7C756D;
+        border-style: none none solid;
+        border-width: 0 0 1px;
+        text-align: center;
+    }
+
+    #contacts th, #contacts td {
+        margin: 0px;
+        padding: 5px 10px;
+    }
+
+
+#contacts tr, th, td{
+    text-align:center;
+    padding:2px;
+}
+
+#list img {
+    max-width: 200px;
+}

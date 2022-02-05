@@ -1,0 +1,155 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Web SQL</title>
+    <link href="../css/MainStyleSheet.css" rel="stylesheet" />
+    <link href="../css/MyWebSQL.css" rel="stylesheet" />
+    <script src="../Scripts/jquery-3.3.1.min.js"></script>
+    <script src="../Scripts/main.js"></script>
+    <script src="../Scripts/MyWebSQL.js"></script>
+</head>
+<body>
+    <div id="container">
+        <my-header></my-header>
+        <section id="input">
+            <h1>Add Student Info</h1>
+            <div id="dataArea">
+                <div>
+                    <label for="firstname">First Name : </label>
+                    <input class="tTip" type="text" id="firstname" name="firstname"  placeholder="Enter your First Name here" required/>
+                </div>
+
+                <div>
+                    <label for="lastname">Last Name : </label>
+                    <input class="tTip" type="text" id="lastname" name="lastname" placeholder="Enter your Last Name here" required/>
+                </div>
+
+                <div>
+                    <label for="email">Email : </label>
+                    <input class="tTip" type="text" id="email" name="email" placeholder="Enter your valid Email here" required/>
+                </div>
+
+                <div>
+                    <label for="phoneNumber">Phone Number : </label>
+                    <input class="tTip" type="text" id="phonenumber" name="phonenumber" placeholder="Enter your valid Phone Number here" required />
+                </div>
+
+            </div>
+
+            <div id="fileArea">
+                <input type="file" id="files">
+
+                <div id="list">
+                </div>
+            </div>
+
+            <div id="btnArea">
+                <button id="btn" onclick="addContact()">Add</button>
+                <input type="button" value="Update Your Record" onclick="save()" />
+                <input type="hidden" id="id" value="" />
+            </div>
+
+        </section>
+        <section id="output">
+            <h1>View Student Info</h1>
+            <table id="contacts" border="1" cellspacing="0" style="width:100%">
+                <tr>
+                    <th>ID</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Phone Number</th>
+                    <th>Email</th>
+                    <th>Image</th>
+                    <th>Update</th>
+                    <th>Delete</th>
+                </tr>
+            </table>
+        </section>
+    </div>
+
+    <script>
+        var imagesObject = [];
+
+        function handleFileSelect(evt) {
+            var files = evt.target.files; 
+
+            for (var i = 0, f; f = files[i]; i++) {
+
+                if (!f.type.match('image.*')) {
+                    continue;
+                }
+
+                var reader = new FileReader();
+
+
+                reader.onload = function (e) {
+                    displayImgData(e.target.result)
+                    addImage(e.target.result);
+                };
+
+                reader.readAsDataURL(f);
+            }
+        }
+
+        function loadFromLocalStorage() {
+            var images = JSON.parse(localStorage.getItem("images"))
+
+            if (images && images.length > 0) {
+                imagesObject = images;
+
+                displayNumberOfImgs();
+                images.forEach(displayImgData);
+            }
+        }
+
+        function addImage(imgData) {
+            imagesObject.push(imgData);
+            displayNumberOfImgs();
+            localStorage.setItem("images", JSON.stringify(imagesObject));
+        }
+
+        function displayImgData(imgData) {
+            var span = document.createElement('span');
+            span.innerHTML = '<img class="thumb" src="' + imgData + '"/>';
+            document.getElementById('list').insertBefore(span, null);
+        }
+
+        function displayNumberOfImgs() {
+            if (imagesObject.length > 0) {
+
+
+                document.getElementById("btn").style.display = "inline";
+
+            } else {
+                document.getElementById("list").style.display = "none";
+            }
+
+
+        }
+
+         function deleteImages(){
+             imagesObject = [];
+             localStorage.removeItem("images");
+           displayNumberOfImgs()
+           document.getElementById('list').innerHTML = "";
+        }
+
+        function clearArea() {
+            document.getElementById("firstname").value = '';
+            document.getElementById("lastname").value='';
+            document.getElementById("phonenumber").value='';
+            document.getElementById("email").value = '';
+            document.getElementById("files").value = '';
+
+        }
+
+        document.getElementById('files').addEventListener('change', handleFileSelect, false);
+        document.getElementById('btn').addEventListener('click', deleteImages);
+        document.getElementById('btn').addEventListener('click', clearArea);
+        loadFromLocalStorage();
+
+    </script>
+
+</body>
+</html>

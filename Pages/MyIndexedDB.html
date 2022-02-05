@@ -1,0 +1,163 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>IndexedDB</title>
+    <link href="../css/MainStyleSheet.css" rel="stylesheet" />
+    <link href="../css/MyIndexedDB.css" rel="stylesheet" />
+    <script src="../Scripts/jquery-3.3.1.min.js"></script>
+    <script src="../Scripts/main.js"></script>
+    <script src="../Scripts/MyIndexedDB.js"></script>
+</head>
+<body>
+    <div id="container">
+        <my-header></my-header>
+        <div role="main">
+            <div id="form_container">
+                <form id="reg_form">
+                    <div id="editContact">
+                        <div id="addcon"><h1>Add Student Information</h1></div>
+                        <div>
+                            <div>
+                                <label for="firstName">First Name : </label>
+                                <input class="tTip" type="text" id="firstName" name="firstName" placeholder="Enter your First Name here"/>
+                                <span>Please Enter your First Name here. Remember to enter text only.</span>
+                                <span id="fnameInfo"></span>
+                            </div>
+                            <div>
+                                <label for="lastName">Last Name : </label>
+                                <input class="tTip" type="text" id="lastName" name="lastName" placeholder="Enter your Last Name here" />
+                                <span>Please Enter your Last name here. Remember to enter text only.</span>
+                                <span id="lnameInfo"></span>
+                            </div>
+                            <div>
+                                <label for="email">Email : </label>
+                                <input class="tTip" type="text" id="email" name="email" placeholder="Enter your valid Email here" />
+                                <span>Please Enter your Email here. Only valid Email is allowed.</span>
+                                <span id="mailInfo"></span>
+                            </div>
+                            <div>
+                                <label for="phoneNumber">Phone Number : </label>
+                                <input class="tTip" type="text" id="phoneNumber" name="phoneNumber" placeholder="Enter your valid Phone Number here" />
+                                <span>Please Enter your Phone number here. Remember to provide numbers only.</span>
+                                <span id="phoneInfo"></span>
+                            </div>
+                            <div>
+                                <label for="address">Address : </label>
+                                <input class="tTip" type="text" id="address" name="address" placeholder="Enter your Address here" />
+                                <span>Please Enter your Address here. Remember to provide real address.</span>
+                                <span id="addressInfo"></span>
+                            </div>
+                        </div>
+                        <div class="form-control" id="imageFile" hidden>
+
+                        </div>
+                        <div class="form-control">
+                            <label for="file">Upload File :</label>
+                            <input type="file" name="file" id="file" />
+                            <div id="list">
+                            </div>
+                        </div>
+                        <div>
+                            <label class="buttons"></label>
+                            <button id="btnSave" name="save">Save</button>
+                        </div>
+                    </div>
+                    <br />
+                </form>
+            </div>
+                <div><h1>Student Information</h1></div>
+                <div>
+                    <table id="contacts">
+                        <thead>
+                            <tr>
+                                <th>Email</th>
+                                <th>Name</th>
+                                <th>Phone Number</th>
+                                <th>Address</th>
+                                <th>File</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+        </div>
+
+        <script>
+            var imagesObject = [];
+
+            function handleFileSelect(evt) {
+                var files = evt.target.files;
+
+                for (var i = 0, f; f = files[i]; i++) {
+
+                    if (!f.type.match('image.*')) {
+                        continue;
+                    }
+
+                    var reader = new FileReader();
+
+                    reader.onload = function (e) {
+                        displayImgData(e.target.result)
+                        addImage(e.target.result);
+                    };
+                    reader.readAsDataURL(f);
+                }
+            }
+
+            function loadFromLocalStorage() {
+                var images = JSON.parse(localStorage.getItem("images"))
+
+                if (images && images.length > 0) {
+                    imagesObject = images;
+
+                    displayNumberOfImgs();
+                    images.forEach(displayImgData);
+                }
+            }
+
+            function addImage(imgData) {
+                imagesObject.push(imgData);
+                displayNumberOfImgs();
+                localStorage.setItem("images", JSON.stringify(imagesObject));
+            }
+
+            function displayImgData(imgData) {
+                var span = document.createElement('span');
+                span.innerHTML = '<img class="thumb" src="' + imgData + '"/>';
+                document.getElementById('list').insertBefore(span, null);
+            }
+
+            function displayNumberOfImgs() {
+                if (imagesObject.length > 0) {
+
+                    document.getElementById("btn").style.display = "inline";
+
+                } else {
+                    document.getElementById("list").style.display = "none";
+                }
+            }
+
+            function deleteImages() {
+                imagesObject = [];
+                localStorage.removeItem("images");
+                displayNumberOfImgs()
+                document.getElementById('list').innerHTML = "";
+            }
+
+            function clearArea() {
+                document.getElementById("firstname").value = '';
+                document.getElementById("lastname").value = '';
+                document.getElementById("phonenumber").value = '';
+                document.getElementById("email").value = '';
+                document.getElementById("file").value = '';
+            }
+            document.getElementById('file').addEventListener('change', handleFileSelect, false);
+            document.getElementById('btnSave').addEventListener('click', deleteImages);
+            document.getElementById('btnSave').addEventListener('click', clearArea);
+            loadFromLocalStorage();
+        </script>
+    </div>
+</body>
+</html>

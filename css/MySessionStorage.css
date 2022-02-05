@@ -1,0 +1,144 @@
+﻿html {
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #333;
+}
+
+
+* {
+    margin: 0;
+    padding: 0;
+    font-size: 12px;
+}
+
+body {
+    background: #acc;
+    margin: 30px 50px;
+    line-height: 1.4;
+}
+
+#list img {
+    max-width: 200px;
+}
+
+#container{
+    display: grid;
+    justify-content: center;
+    margin-top: 50px;
+}
+
+aside, footer, header, hgroup, nav {
+    display: block;
+}
+
+header {
+    height: 20px;
+    background-repeat: no-repeat;
+    margin-top: 10px;
+}
+
+#headerText {
+    width: 100%;
+    text-align: center;
+}
+
+#headerText h2{
+    font-size:2rem;
+    color:white;
+}
+
+h1 {
+    font-size: 24px;
+}
+
+div[role="main"] {
+    float: left;
+    width: 60%;
+}
+
+#editContact {
+    background: none repeat scroll 0 0 #F8F8F8;
+    width: 500px;
+    margin-top: 20px;
+    box-shadow: 0 1px 5px rgba(104, 104, 104, 0.8);
+    background-color: #ccc;
+}
+
+    #editContact h2 {
+        padding-left: 10px;
+        margin-top: 10px;
+        font-size: 2rem;
+        color:#555;
+        text-align: center;
+        margin: 20px 0;
+    }
+
+    #editContact div {
+        width: 350px;
+        padding: 10px;
+        padding-left: 30px;
+    }
+
+        #editContact div.buttons {
+            text-align: center;
+        }
+
+    #editContact label {
+        width: 150px;
+        height: 12px;
+        clear: left;
+        display: block;
+        float: left;
+        color:#555;
+    }
+
+    #editContact input {
+        width: 190px;
+        padding: 3px;
+    }
+
+button {
+    width: 200px;
+    margin-top: 10px;
+    padding: 5px 20px;
+    border:none;
+    border-radius:5px;
+    background: #333;
+    color:#ddd;
+}
+button:hover{
+    background: #fff;
+    color:#333;
+}
+
+#contacts {
+    width: 500px;
+    border: 1px solid #E1E1E1;
+    margin: 0px;
+    padding: 0px;
+    box-shadow: 0 1px 5px rgba(104, 104, 104, 0.8);
+}
+
+    #contacts thead {
+        background-color: #e1e1e1;
+        color: #7C756D;
+        font-weight: bold;
+        text-align: left;
+    }
+
+    #contacts tbody tr:nth-child(even) {
+        background-color: #ddd;
+    }
+
+    #contacts th {
+        border-color: #7C756D;
+        border-style: none none solid;
+        border-width: 0 0 1px;
+        text-align: center;
+    }
+
+    #contacts th, #contacts td {
+        margin: 0px;
+        padding: 5px 10px;
+    }
+
